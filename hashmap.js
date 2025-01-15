@@ -20,13 +20,8 @@ export default class HashMap {
   
   set(key, value) {
 
-    if ((this.capacity * this.loadFactor) < this.length() + 1) {
-      let temp = this.entries();
-      this.clear();
-      this.capacity = this.capacity * 2;
-      temp.forEach(element => {
-        this.set(element[0], element[1]);
-      });
+    if ((this.capacity * this.loadFactor) < this.length()) {
+      grow();
     }
 
     let index = this.hash(key);
@@ -44,6 +39,15 @@ export default class HashMap {
       this.buckets[index].value.append(value)
     }
     
+  }
+
+  grow() {
+    let temp = this.entries();
+    this.clear();
+    this.capacity = this.capacity * 2;
+    temp.forEach(element => {
+      this.set(element[0], element[1]);
+    });
   }
 
   get(key) {

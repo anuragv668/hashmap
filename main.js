@@ -1,13 +1,21 @@
 import HashMap from "./hashmap.js";
 
-let h = new HashMap();
+let test = new HashMap();
 
-h.set('av', 22);
+test.set('apple', 'red')
+test.set('banana', 'yellow')
+test.set('carrot', 'orange')
+test.set('dog', 'brown')
+test.set('elephant', 'gray')
+test.set('frog', 'green')
+test.set('grape', 'purple')
+test.set('hat', 'black')
+test.set('ice cream', 'white')
+test.set('jacket', 'blue')
+test.set('kite', 'pink')
+test.set('lion', 'golden')
+test.set('moon', 'silver')
+test.set('moo', 'silver')
+test.set('mo', 'silver')
+test.set('samosa', 'paw')
 
-
-h.set('ab', 23);
-
-h.set('ac', 26);
-
-
-console.log(h.entries());
