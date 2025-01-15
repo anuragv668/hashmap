@@ -19,6 +19,16 @@ export default class HashMap {
   }
   
   set(key, value) {
+
+    if ((this.capacity * this.loadFactor) < this.length() + 1) {
+      let temp = this.entries();
+      this.clear();
+      this.capacity = this.capacity * 2;
+      temp.forEach(element => {
+        this.set(element[0], element[1]);
+      });
+    }
+
     let index = this.hash(key);
     if (index < 0 || index >= this.capacity) {
       throw new Error("Trying to access index out of bounds");
@@ -78,7 +88,7 @@ export default class HashMap {
     let sum = 0;
     this.buckets.forEach(element => {
       if(element.key) {
-        sum += element.value.size()
+        sum++;
       }
     }); 
     return sum;
